@@ -3,7 +3,10 @@ import numpy as np
 import os
 RECOGNIZER=cv2.face.LBPHFaceRecognizer_create()
 PASS_CONF=45
-FACE_CASCADE=cv2.CascadeClassifier('/Users/chiral/PycharmProjects/PythonProject/MR智能视频打卡系统/cascades/haarcascade_frontalface_default.xml')
+path=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'cascades')
+path_new=os.path.join(path,'haarcascade_frontalface_default.xml')
+# print(path_new)
+FACE_CASCADE=cv2.CascadeClassifier(path_new)
 def train(photos,labels):
     RECOGNIZER.train(photos,np.array(labels))
 def found_face(gray_img):
